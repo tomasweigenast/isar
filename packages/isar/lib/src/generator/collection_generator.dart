@@ -26,7 +26,7 @@ class _IsarCollectionGenerator extends GeneratorForAnnotation<Collection> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
-    final generatePropertyMapper = config['propertyMapper'] == true;
+    final generatePropertyMapper = (config['propertyMapper'] as bool?) ?? true;
     final object = _IsarAnalyzer().analyzeCollection(element);
     final idType = object.idProperty!.type == IsarType.string ? 'String' : 'int';
     return '''
@@ -76,7 +76,7 @@ class _IsarEmbeddedGenerator extends GeneratorForAnnotation<Embedded> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) async {
-    final generatePropertyMapper = config['propertyMapper'] == true;
+    final generatePropertyMapper = (config['propertyMapper'] as bool?) ?? true;
     final object = _IsarAnalyzer().analyzeEmbedded(element);
     return '''
       // coverage:ignore-file
